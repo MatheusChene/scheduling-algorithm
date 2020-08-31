@@ -1,0 +1,27 @@
+{
+    "executionWindow": {
+        "startDate": "2019-11-10T12:00:00.000Z",
+        "endDate": "2019-11-11T15:00:00.000Z"
+    },
+    "jobs": [
+        {
+            "id": 1,
+            "description": "Importação de arquivos de fundos",
+            "conclusionMaxDate": "2019-11-10T15:00:00.000Z",
+            "estimatedTime": 2
+        },
+        {
+            "id": 2,
+            "description": "Importação de dados da Base Legada",
+            "conclusionMaxDate": "2019-11-11T15:00:00.000Z",
+            "estimatedTime": 4
+        },
+        {
+            "id": 3,
+            "description": "Importação de dados de integração",
+            "conclusionMaxDate": "2019-11-11T11:00:00.000Z",
+            "estimatedTime": 6
+        }
+    ],
+    "results": [[1, 3], [2]]
+}

@@ -1,0 +1,26 @@
+{
+    "name": "scheduling-algorithm",
+    "version": "1.0.0",
+    "description": "Scheduling job algorithm problem",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "jest",
+        "start": "node index",
+        "start1": "jest && node index"
+    },
+    "author": "Matheus Moreira",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.11.4",
+        "@babel/node": "^7.10.5",
+        "@babel/preset-env": "^7.11.0",
+        "babel-cli": "^6.26.0",
+        "babel-jest": "^26.3.0",
+        "jest": "^26.4.2"
+    },
+    "dependencies": {
+        "blessed": "^0.1.81",
+        "blessed-contrib": "^4.8.20"
+    }
+}
