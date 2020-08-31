@@ -1,0 +1,308 @@
+{
+  "executionWindow": {
+    "startDate": "2020-07-21T14:00:00.000Z",
+    "endDate": "2020-07-26T04:00:00.000Z"
+  },
+  "jobs": [
+    {
+      "id": 0,
+      "description": "Job 0",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-22T22:00:00.000Z"
+    },
+    {
+      "id": 1,
+      "description": "Job 1",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-24T13:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "description": "Job 2",
+      "estimatedTime": 2,
+      "conclusionMaxDate": "2020-07-22T12:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "description": "Job 3",
+      "estimatedTime": 1,
+      "conclusionMaxDate": "2020-07-21T15:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "description": "Job 4",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-22T04:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "description": "Job 5",
+      "estimatedTime": 5,
+      "conclusionMaxDate": "2020-07-25T13:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "description": "Job 6",
+      "estimatedTime": 2,
+      "conclusionMaxDate": "2020-07-25T20:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "description": "Job 7",
+      "estimatedTime": 4,
+      "conclusionMaxDate": "2020-07-22T11:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "description": "Job 8",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-22T17:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "description": "Job 9",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-22T10:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "description": "Job 10",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-23T21:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "description": "Job 11",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-25T22:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "description": "Job 12",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-24T19:00:00.000Z"
+    },
+    {
+      "id": 13,
+      "description": "Job 13",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-25T13:00:00.000Z"
+    },
+    {
+      "id": 14,
+      "description": "Job 14",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-26T02:00:00.000Z"
+    },
+    {
+      "id": 15,
+      "description": "Job 15",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-25T03:00:00.000Z"
+    },
+    {
+      "id": 16,
+      "description": "Job 16",
+      "estimatedTime": 7,
+      "conclusionMaxDate": "2020-07-22T23:00:00.000Z"
+    },
+    {
+      "id": 17,
+      "description": "Job 17",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-24T16:00:00.000Z"
+    },
+    {
+      "id": 18,
+      "description": "Job 18",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-25T07:00:00.000Z"
+    },
+    {
+      "id": 19,
+      "description": "Job 19",
+      "estimatedTime": 1,
+      "conclusionMaxDate": "2020-07-24T21:00:00.000Z"
+    },
+    {
+      "id": 20,
+      "description": "Job 20",
+      "estimatedTime": 1,
+      "conclusionMaxDate": "2020-07-25T06:00:00.000Z"
+    },
+    {
+      "id": 21,
+      "description": "Job 21",
+      "estimatedTime": 2,
+      "conclusionMaxDate": "2020-07-23T16:00:00.000Z"
+    },
+    {
+      "id": 22,
+      "description": "Job 22",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-21T20:00:00.000Z"
+    },
+    {
+      "id": 23,
+      "description": "Job 23",
+      "estimatedTime": 5,
+      "conclusionMaxDate": "2020-07-21T19:00:00.000Z"
+    },
+    {
+      "id": 24,
+      "description": "Job 24",
+      "estimatedTime": 7,
+      "conclusionMaxDate": "2020-07-21T21:00:00.000Z"
+    },
+    {
+      "id": 25,
+      "description": "Job 25",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-24T18:00:00.000Z"
+    },
+    {
+      "id": 26,
+      "description": "Job 26",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-24T11:00:00.000Z"
+    },
+    {
+      "id": 27,
+      "description": "Job 27",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-24T07:00:00.000Z"
+    },
+    {
+      "id": 28,
+      "description": "Job 28",
+      "estimatedTime": 2,
+      "conclusionMaxDate": "2020-07-23T09:00:00.000Z"
+    },
+    {
+      "id": 29,
+      "description": "Job 29",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-22T19:00:00.000Z"
+    },
+    {
+      "id": 30,
+      "description": "Job 30",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-24T09:00:00.000Z"
+    },
+    {
+      "id": 31,
+      "description": "Job 31",
+      "estimatedTime": 7,
+      "conclusionMaxDate": "2020-07-22T18:00:00.000Z"
+    },
+    {
+      "id": 32,
+      "description": "Job 32",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-25T20:00:00.000Z"
+    },
+    {
+      "id": 33,
+      "description": "Job 33",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-22T23:00:00.000Z"
+    },
+    {
+      "id": 34,
+      "description": "Job 34",
+      "estimatedTime": 7,
+      "conclusionMaxDate": "2020-07-22T10:00:00.000Z"
+    },
+    {
+      "id": 35,
+      "description": "Job 35",
+      "estimatedTime": 7,
+      "conclusionMaxDate": "2020-07-24T15:00:00.000Z"
+    },
+    {
+      "id": 36,
+      "description": "Job 36",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-23T21:00:00.000Z"
+    },
+    {
+      "id": 37,
+      "description": "Job 37",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-25T00:00:00.000Z"
+    },
+    {
+      "id": 38,
+      "description": "Job 38",
+      "estimatedTime": 2,
+      "conclusionMaxDate": "2020-07-26T01:00:00.000Z"
+    },
+    {
+      "id": 39,
+      "description": "Job 39",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-24T14:00:00.000Z"
+    },
+    {
+      "id": 40,
+      "description": "Job 40",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-23T20:00:00.000Z"
+    },
+    {
+      "id": 41,
+      "description": "Job 41",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-25T21:00:00.000Z"
+    },
+    {
+      "id": 42,
+      "description": "Job 42",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-22T10:00:00.000Z"
+    },
+    {
+      "id": 43,
+      "description": "Job 43",
+      "estimatedTime": 4,
+      "conclusionMaxDate": "2020-07-25T00:00:00.000Z"
+    },
+    {
+      "id": 44,
+      "description": "Job 44",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-23T16:00:00.000Z"
+    },
+    {
+      "id": 45,
+      "description": "Job 45",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-24T07:00:00.000Z"
+    },
+    {
+      "id": 46,
+      "description": "Job 46",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-23T07:00:00.000Z"
+    },
+    {
+      "id": 47,
+      "description": "Job 47",
+      "estimatedTime": 8,
+      "conclusionMaxDate": "2020-07-24T12:00:00.000Z"
+    },
+    {
+      "id": 48,
+      "description": "Job 48",
+      "estimatedTime": 3,
+      "conclusionMaxDate": "2020-07-25T23:00:00.000Z"
+    },
+    {
+      "id": 49,
+      "description": "Job 49",
+      "estimatedTime": 6,
+      "conclusionMaxDate": "2020-07-25T00:00:00.000Z"
+    }
+  ]
+}
