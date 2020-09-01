@@ -1,46 +1,4 @@
-import validator from "../src/json-validator.js";
-
-const jsonObj = {
-	executionWindow: {
-		startDate: "2019-11-10T12:00:00.000Z",
-		endDate: "2019-11-11T15:00:00.000Z",
-	},
-	jobs: [
-		{
-			id: 1,
-			description: "Importação de arquivos de fundos",
-			conclusionMaxDate: "2019-11-10T15:00:00.000Z",
-			estimatedTime: 2,
-		},
-		{
-			id: 2,
-			description: "Importação de dados da Base Legada",
-			conclusionMaxDate: "2019-11-11T15:00:00.000Z",
-			estimatedTime: 4,
-		},
-		{
-			id: 3,
-			description: "Importação de dados de integração",
-			conclusionMaxDate: "2019-11-11T11:00:00.000Z",
-			estimatedTime: 6,
-		},
-	],
-};
-
-const invalidJobs = [
-	{
-		id: 1,
-		description: "Importação de arquivos de fundos",
-		conclusionMaxDate: "2019-11-09T15:00:00.000Z",
-		estimatedTime: 5,
-	},
-	{
-		id: 2,
-		description: "Importação de dados da Base Legada",
-		conclusionMaxDate: "2019-11-09T15:00:00.000Z",
-		estimatedTime: 4,
-	},
-];
+import validator from "../src/job-validator.js";
 
 test("should give exception error, jsonObj null", () => {
 	expect(() => validator.validateJson()).toThrow("Cannot read property 'jobs' of undefined");
@@ -48,6 +6,14 @@ test("should give exception error, jsonObj null", () => {
 
 test("should give exception error, jsonObj.jobs null", () => {
 	expect(() => validator.validateJson({})).toThrow("jsonObj.jobs is not iterable");
+});
+
+test("should return true on validateJob when job is valid", () => {
+	expect(validator.validateJob(jsonObj.jobs[0], jsonObj.executionWindow.startDate, jsonObj.executionWindow.endDate)).toBe(true);
+});
+
+test("should return false on validateJob when job is invalid", () => {
+	expect(validator.validateJob(invalidJobs[0], jsonObj.executionWindow.startDate, jsonObj.executionWindow.endDate)).toBe(false);
 });
 
 test("validateTimeToExecute should return true", () => {
@@ -115,3 +81,45 @@ test("should return 4 validation message", () => {
 test("should return 0 validation message", () => {
 	expect(validator.validateJson(jsonObj)).toHaveLength(0);
 });
+
+const jsonObj = {
+	executionWindow: {
+		startDate: "2019-11-10T12:00:00.000Z",
+		endDate: "2019-11-11T15:00:00.000Z",
+	},
+	jobs: [
+		{
+			id: 1,
+			description: "Importação de arquivos de fundos",
+			conclusionMaxDate: "2019-11-10T15:00:00.000Z",
+			estimatedTime: 2,
+		},
+		{
+			id: 2,
+			description: "Importação de dados da Base Legada",
+			conclusionMaxDate: "2019-11-11T15:00:00.000Z",
+			estimatedTime: 4,
+		},
+		{
+			id: 3,
+			description: "Importação de dados de integração",
+			conclusionMaxDate: "2019-11-11T11:00:00.000Z",
+			estimatedTime: 6,
+		},
+	],
+};
+
+const invalidJobs = [
+	{
+		id: 1,
+		description: "Importação de arquivos de fundos",
+		conclusionMaxDate: "2019-11-09T15:00:00.000Z",
+		estimatedTime: 5,
+	},
+	{
+		id: 2,
+		description: "Importação de dados da Base Legada",
+		conclusionMaxDate: "2019-11-09T15:00:00.000Z",
+		estimatedTime: 4,
+	},
+];

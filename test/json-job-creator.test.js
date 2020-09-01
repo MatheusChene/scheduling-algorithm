@@ -1,5 +1,5 @@
 import jsonJobCreator from "../src/json-job-creator.js";
-import validator from "../src/json-validator.js";
+import validator from "../src/job-validator.js";
 import fs from "fs";
 
 jest.mock("fs");

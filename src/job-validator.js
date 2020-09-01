@@ -15,11 +15,19 @@ validator.validateJson = (jsonObj) => {
 	return validationsMessages;
 };
 
+validator.validateJob = (job, startDate, endDate) => {
+	if (validator.validateTimeToExecute(job, startDate) || validator.validateConclusionMaxDate(job.conclusionMaxDate, startDate, endDate)) {
+		return false;
+	}
+
+	return true;
+};
+
 validator.validateTimeToExecute = ({ estimatedTime, conclusionMaxDate }, startDate) => {
 	const minimumConclusionDate = new Date(startDate);
 	minimumConclusionDate.setHours(minimumConclusionDate.getHours() + estimatedTime);
 
-	if (minimumConclusionDate > new Date(conclusionMaxDate)) return true;
+	if (minimumConclusionDate > new Date(conclusionMaxDate) || estimatedTime > 8) return true;
 
 	return false;
 };

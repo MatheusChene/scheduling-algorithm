@@ -1,4 +1,4 @@
-import validator from "./json-validator.js";
+import validator from "./job-validator.js";
 import fs from "fs";
 
 let jsonJobCreator = {};
