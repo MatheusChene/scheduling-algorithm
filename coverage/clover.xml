@@ -1,10 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1598582295374" clover="3.2.0">
-  <project timestamp="1598582295374" name="All files">
-    <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="2" coveredelements="2" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
-    <file name="sum.js" path="B:\Workspace\scheduling-algorithm\sum.js">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="2" count="1" type="stmt"/>
+<coverage generated="1598931449374" clover="3.2.0">
+  <project timestamp="1598931449375" name="All files">
+    <metrics statements="54" coveredstatements="54" conditionals="18" coveredconditionals="18" methods="6" coveredmethods="6" elements="78" coveredelements="78" complexity="0" loc="54" ncloc="54" packages="1" files="2" classes="2"/>
+    <file name="json-job-creator.js" path="B:\Workspace\scheduling-algorithm\src\json-job-creator.js">
+      <metrics statements="36" coveredstatements="36" conditionals="8" coveredconditionals="8" methods="3" coveredmethods="3"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="4" type="stmt"/>
+      <line num="8" count="4" type="stmt"/>
+      <line num="9" count="4" type="stmt"/>
+      <line num="10" count="4" type="stmt"/>
+      <line num="12" count="4" type="stmt"/>
+      <line num="20" count="4" type="stmt"/>
+      <line num="22" count="4" type="stmt"/>
+      <line num="23" count="116" type="stmt"/>
+      <line num="24" count="116" type="stmt"/>
+      <line num="25" count="116" type="stmt"/>
+      <line num="27" count="116" type="stmt"/>
+      <line num="29" count="116" type="cond" truecount="2" falsecount="0"/>
+      <line num="30" count="3" type="stmt"/>
+      <line num="33" count="116" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="29" type="stmt"/>
+      <line num="37" count="116" type="stmt"/>
+      <line num="44" count="116" type="stmt"/>
+      <line num="47" count="4" type="stmt"/>
+      <line num="49" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="50" count="1" type="stmt"/>
+      <line num="51" count="52" type="stmt"/>
+      <line num="55" count="4" type="stmt"/>
+      <line num="57" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="58" count="3" type="stmt"/>
+      <line num="59" count="3" type="stmt"/>
+      <line num="63" count="1" type="stmt"/>
+      <line num="64" count="121" type="stmt"/>
+      <line num="66" count="121" type="stmt"/>
+      <line num="67" count="121" type="stmt"/>
+      <line num="68" count="121" type="stmt"/>
+      <line num="69" count="121" type="stmt"/>
+      <line num="70" count="121" type="stmt"/>
+      <line num="73" count="1" type="stmt"/>
+      <line num="74" count="250" type="stmt"/>
+    </file>
+    <file name="json-validator.js" path="B:\Workspace\scheduling-algorithm\src\json-validator.js">
+      <metrics statements="18" coveredstatements="18" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="4" count="10" type="stmt"/>
+      <line num="6" count="10" type="stmt"/>
+      <line num="7" count="127" type="cond" truecount="2" falsecount="0"/>
+      <line num="8" count="34" type="stmt"/>
+      <line num="10" count="127" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="31" type="stmt"/>
+      <line num="15" count="8" type="stmt"/>
+      <line num="18" count="2" type="stmt"/>
+      <line num="19" count="97" type="stmt"/>
+      <line num="20" count="97" type="stmt"/>
+      <line num="22" count="97" type="cond" truecount="2" falsecount="0"/>
+      <line num="24" count="94" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="28" count="164" type="stmt"/>
+      <line num="30" count="164" type="cond" truecount="4" falsecount="0"/>
+      <line num="32" count="159" type="stmt"/>
     </file>
   </project>
 </coverage>

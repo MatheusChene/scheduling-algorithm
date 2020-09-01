@@ -4,5 +4,8 @@ import jsonJobCreator from "./src/json-job-creator.js";
 
 // UI.init(core);
 
-jsonJobCreator.create();
+//jsonJobCreator.create();
+let jsonJobs = core.readFile("./jobs/cit-test.json");
+//let jsonJobs = core.readFile("./jobs/generated-json.json");
+core.scheduleJobs(jsonJobs);
 //core.test();

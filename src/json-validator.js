@@ -4,10 +4,10 @@ validator.validateJson = (jsonObj) => {
 	const validationsMessages = [];
 
 	for (const job of jsonObj.jobs) {
-		if (validateTimeToExecute(job, jsonObj.executionWindow.startDate)) {
+		if (validator.validateTimeToExecute(job, jsonObj.executionWindow.startDate)) {
 			validationsMessages.push(`Not enought time to execute job id ${job.id}`);
 		}
-		if (validateConclusionMaxDate(job.conclusionMaxDate, jsonObj.executionWindow.endDate)) {
+		if (validator.validateConclusionMaxDate(job.conclusionMaxDate, jsonObj.executionWindow.startDate, jsonObj.executionWindow.endDate)) {
 			validationsMessages.push(`Job id ${job.id} maximum date conclusion is out of the execution window`);
 		}
 	}
@@ -15,7 +15,7 @@ validator.validateJson = (jsonObj) => {
 	return validationsMessages;
 };
 
-const validateTimeToExecute = ({ estimatedTime, conclusionMaxDate }, startDate) => {
+validator.validateTimeToExecute = ({ estimatedTime, conclusionMaxDate }, startDate) => {
 	const minimumConclusionDate = new Date(startDate);
 	minimumConclusionDate.setHours(minimumConclusionDate.getHours() + estimatedTime);
 
@@ -24,8 +24,10 @@ const validateTimeToExecute = ({ estimatedTime, conclusionMaxDate }, startDate) 
 	return false;
 };
 
-const validateConclusionMaxDate = (jobMaxDate, endDate) => {
-	if (new Date(jobMaxDate) > new Date(endDate)) return true;
+validator.validateConclusionMaxDate = (jobMaxDate, startDate, endDate) => {
+	jobMaxDate = new Date(jobMaxDate);
+
+	if (jobMaxDate < new Date(startDate) || jobMaxDate > new Date(endDate)) return true;
 
 	return false;
 };

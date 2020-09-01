@@ -2,51 +2,51 @@ import fs from "fs";
 
 const core = {};
 
-core.loadJobs = (jobs) => {
-	console.log(student);
-};
-
 core.readFile = (filePath) => {
-	const rawData = fs.readFileSync(filePath);
-	return JSON.parse(rawData);
+	if (fs.existsSync(jsonPath)) {
+		const rawData = fs.readFileSync(filePath);
+		return JSON.parse(rawData);
+	}
 };
 
 core.scheduleJobs = (jsonObj) => {
 	const scheduleJobs = [];
-	const helperArr = [];
+	const jobList = [];
+	const startDate = new Date(jsonObj.executionWindow.startDate);
 	const sortedJobs = jsonObj.jobs.sort((a, b) => new Date(a.conclusionMaxDate).getTime() - new Date(b.conclusionMaxDate).getTime());
 
-	const startDate = new Date(jsonObj.executionWindow.startDate);
-
 	for (const job of sortedJobs) {
-		if (!helperArr.length) {
-			helperArr.push({ id: job.id, estimatedTime: job.estimatedTime });
+		if (!jobList.length) {
+			jobList.push({ scheduleAccumulatedTime: job.estimatedTime, jobs: [job.id] });
 		} else {
-			const matchJob = helperArr.find((x) => this.jobMatch(x, job, startDate));
+			const scheduleMatch = jobList.find((uJob) => core.jobMatch(uJob.scheduleAccumulatedTime, job, startDate));
 
-			if (matchJob) {
-				scheduleJobs.push([matchJob.id, job.id]);
+			if (scheduleMatch) {
+				scheduleMatch.scheduleAccumulatedTime += job.estimatedTime;
+				scheduleMatch.jobs.push(job.id);
 			} else {
-				helperArr.push({ id: job.id, estimatedTime: job.estimatedTime });
+				jobList.push({ scheduleAccumulatedTime: job.estimatedTime, jobs: [job.id] });
 			}
 		}
 	}
 
-	if (helperArr.length) {
-		for (const job of helperArr) {
-			scheduleJobs.push([job.id]);
-		}
+	for (const list of jobList) {
+		scheduleJobs.push(list.jobs);
 	}
 
-	return scheduleJobs;
+	console.log(scheduleJobs);
 };
 
-core.jobMatch = (scheduledJob, job, startDate) => {
-	if (scheduledJob.estimatedTime + job.estimatedTime > 8) return false;
+core.jobMatch = (scheduleAccumulatedTime, job, startDate) => {
+	if (scheduleAccumulatedTime + job.estimatedTime > 8) {
+		return false;
+	}
 
-	const jobConclusionDate = startDate.setHours(startDate.getHours() + scheduledJob.estimatedTime + job.estimatedTime);
+	const jobConclusionDate = startDate.setHours(startDate.getHours() + scheduleAccumulatedTime + job.estimatedTime);
 
-	if (jobConclusionDate > job.conclusionMaxDate) return false;
+	if (jobConclusionDate > job.conclusionMaxDate) {
+		return false;
+	}
 
 	return true;
 };
