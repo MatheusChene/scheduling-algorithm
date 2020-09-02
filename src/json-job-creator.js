@@ -1,9 +1,12 @@
 import validator from "./job-validator.js";
+
 import fs from "fs";
 
 let jsonJobCreator = {};
 
-jsonJobCreator.create = () => {
+jsonJobCreator.create = (uiLogMessage) => {
+	uiLogMessage("Generating new file...");
+
 	const startDate = jsonJobCreator.randomDate(new Date(2020, 0, 31), new Date(2020, 11, 31));
 	const endDate = new Date(startDate);
 	endDate.setDate(startDate.getDate() + jsonJobCreator.randomNumberBetween(1, 5));
@@ -47,9 +50,13 @@ jsonJobCreator.create = () => {
 	let validations = validator.validateJson(randomJobsJson);
 
 	if (validations.length) {
+		uiLogMessage("Something wrong is not right:");
+
 		for (const validation of validations) {
-			console.log(validation);
+			uiLogMessage(validation);
 		}
+
+		uiLogMessage("This file will generate some inconsistent data.");
 	}
 
 	const jsonPath = "./jobs/generated-json.json";
@@ -57,6 +64,9 @@ jsonJobCreator.create = () => {
 	if (fs.existsSync(jsonPath)) {
 		const data = JSON.stringify(randomJobsJson, null, 2);
 		fs.writeFileSync(jsonPath, data);
+		uiLogMessage("New file generation is completed.");
+	} else {
+		uiLogMessage("generated-json.json file does not exists, please verify.");
 	}
 };
 

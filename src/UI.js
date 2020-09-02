@@ -1,119 +1,206 @@
-import contrib from "blessed-contrib";
-import blessed from "blessed";
-import fs from "fs";
+import jsonJobCreator from "./json-job-creator.js";
+import validator from "./job-validator.js";
+import core from "./core.js";
 
-let screen = blessed.screen();
+import blessed from "blessed";
+import contrib from "blessed-contrib";
+import fs from "fs";
 
 let UI = {};
 
-UI.init = (core) => {
-    //grid.set(row, col, rowSpan, colSpan, obj, opts)
+UI.init = () => {
+	const screen = blessed.screen({
+		smartCSR: true,
+	});
 
-    UI.grid = new contrib.grid({
-        rows: 12,
-        cols: 6,
-        screen: screen,
-    });
+	UI.grid = new contrib.grid({
+		rows: 12,
+		cols: 6,
+		screen: screen,
+	});
 
-    UI.logger = UI.grid.set(0, 0, 9, 6, contrib.log, {
-        fg: "green",
-        selectedFg: "green",
-        label: "Logs",
-    });
+	UI.logger = UI.grid.set(0, 0, 8, 6, contrib.log, {
+		fg: "green",
+		selectedFg: "green",
+		label: "Logs",
+	});
 
-    // UI.commands = UI.grid.set(9, 0, 3, 3, blessed.box, {
-    //     label: "Commands",
-    // });
+	logMessage("Welcome to Scheduling Algorithm");
+	logMessage("Initializing UI...");
 
-    UI.commands = UI.grid.set(9, 0, 3, 3, blessed.listbar, {
-        label: "Commands",
-        mouse: true,
-        keys: true,
-        vi: true,
-        autoCommandKeys: true,
-        style: {
-            item: {
-                fg: "white",
-            },
-            selected: {
-                bg: "#00bcd4",
-            },
-        },
-        commands: {
-            "Refresh data-base list": function () {
-                UI.refreshFiles();
-                UI.logger.log("Loading Jobs from file:");
-            },
-            one: {
-                keys: ["a"],
-                callback: function () {
-                    UI.logger.log("Loading Jobs from file1:");
-                },
-            },
-            two: function () {
-                UI.logger.log("Loading Jobs from file2:");
-            },
-            three: function () {
-                UI.logger.log("Loading Jobs from file3:");
-            },
-        },
-    });
+	UI.fileLoaded = UI.grid.set(8, 0, 1, 6, blessed.box, {
+		label: "File currently loaded:",
+		content: "None",
+	});
 
-    UI.commands.on("click", UI.commands.focus.bind(UI.commands));
+	UI.commands = UI.grid.set(9, 0, 3, 3, contrib.tree, {
+		label: "Commands",
+	});
 
-    // UI.commands.on("keypress", function (ch, item) {
-    //     console.log("aaa");
-    // });
+	UI.commands.setData({
+		extended: true,
+		children: [
+			{
+				name: "Select file",
+				command: 1,
+			},
+			{
+				name: "Generate new random job file",
+				command: 2,
+			},
+			{
+				name: "Verify selected file",
+				command: 3,
+			},
+			{
+				name: "Execute scheduler algorithm",
+				command: 4,
+			},
+		],
+	});
 
-    // UI.commands.key(["right", "left"], function (ch, key) {
-    //     UI.files.focus();
-    // });
+	UI.commands.on("select", function (item) {
+		switch (item.command) {
+			case 1:
+				setBorder(UI.commands, false);
+				setBorder(UI.files, true);
+				selectFiles();
+				break;
+			case 2:
+				generateNewRandomJobFile();
+				break;
+			case 3:
+				verifySelectedFile();
+				break;
+			case 4:
+				executeScheduler();
+				break;
+			default:
+				break;
+		}
+	});
 
-    UI.files = UI.grid.set(9, 3, 3, 3, contrib.tree, {
-        label: "Saved jobs Json",
-    });
+	UI.files = UI.grid.set(9, 3, 3, 3, contrib.tree, {
+		label: "Saved jobs Json",
+	});
 
-    UI.files.on("select", function (item) {
-        const fileName = item.name;
+	UI.files.on("select", function (item) {
+		const fileName = item.name;
 
-        UI.logger.log("Loading Jobs from file:");
-        UI.logger.log(fileName);
+		logMessage(`Loading Jobs from file ${fileName}...`);
+		UI.commands.focus();
 
-        const jobs = require("./jobs/" + fileName);
+		UI.fileLoaded.setContent(item.name);
+		setBorder(UI.files, false);
+		setBorder(UI.commands, true);
+		screen.render();
+	});
 
-        core.loadJobs(jobs);
-    });
+	screen.key(["escape", "q", "C-c"], function (ch, key) {
+		return process.exit(0);
+	});
 
-    UI.files.key(["right", "left"], function (ch, key) {
-        UI.commands.focus();
-    });
+	refreshFiles();
+	screen.render();
 
-    screen.key(["escape", "q", "C-c"], function (ch, key) {
-        return process.exit(0);
-    });
-
-    UI.refreshFiles();
-    screen.render();
+	UI.commands.focus();
+	setBorder(UI.commands, true);
+	logMessage("UI loading completed!");
 };
 
-UI.refreshFiles = () => {
-    let files = [];
-    let fileData = {
-        extended: true,
-        children: [{ name: "teste" }],
-    };
+const refreshFiles = () => {
+	let files = [];
+	let fileData = {
+		extended: true,
+		children: [],
+	};
 
-    UI.logger.log("Reading data-base dir...");
-    files = fs.readdirSync("./data-base");
-    for (var k in files) {
-        if (files[k].indexOf(".json") >= 0) {
-            fileData.children.push({
-                name: files[k],
-            });
-        }
-    }
+	logMessage("Reading jobs dir...");
+	files = fs.readdirSync("./jobs");
+	for (var k in files) {
+		if (files[k].indexOf(".json") >= 0) {
+			fileData.children.push({
+				name: files[k],
+			});
+		}
+	}
 
-    UI.files.setData(fileData);
+	UI.files.setData(fileData);
+};
+
+const selectFiles = () => {
+	refreshFiles();
+	logMessage("Select a file:");
+	UI.files.focus();
+};
+
+const generateNewRandomJobFile = () => {
+	jsonJobCreator.create(logMessage);
+};
+
+const verifySelectedFile = () => {
+	const file = UI.fileLoaded.getContent();
+
+	if (file === "None") {
+		logMessage("No file currently selected...");
+		logMessage("Please select a file...");
+
+		return null;
+	} else {
+		const filePath = `./jobs/${file}`;
+
+		const jsonJob = core.readFile(filePath);
+		const messages = validator.validateJson(jsonJob);
+
+		if (messages.length) {
+			for (const message of messages) {
+				logMessage(message);
+			}
+		} else {
+			logMessage("Selected file is valid.");
+		}
+
+		return jsonJob;
+	}
+};
+
+const executeScheduler = () => {
+	const jsonJob = verifySelectedFile();
+
+	if (jsonJob) {
+		const result = core.scheduleJobs(jsonJob);
+
+		if (result.scheduleJobs) {
+			logMessage("Valid jobs schedule arrays:");
+			logMessage(JSON.stringify(result.scheduleJobs));
+		}
+		if (result.invalidJobList) {
+			logMessage("Invalid jobs ids:");
+			logMessage(JSON.stringify(result.invalidJobList));
+		}
+	}
+};
+
+const setBorder = (box, selected) => {
+	if (selected) {
+		box.style = {
+			border: {
+				fg: "blue",
+				bold: true,
+			},
+		};
+	} else {
+		box.style = {
+			border: {
+				fg: "green",
+				bold: false,
+			},
+		};
+	}
+};
+
+const logMessage = (message) => {
+	UI.logger.log(message);
 };
 
 export default UI;

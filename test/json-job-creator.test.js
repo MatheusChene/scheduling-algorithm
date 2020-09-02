@@ -25,7 +25,7 @@ test("should validate set hour causing date bigger then end date", () => {
 	spy.mockReturnValueOnce(true);
 
 	fs.existsSync.mockReturnValue(true);
-	jsonJobCreator.create();
+	jsonJobCreator.create(jest.fn());
 	expect(fs.writeFileSync).toHaveBeenCalled();
 
 	spy.mockRestore();
@@ -38,12 +38,12 @@ test("should return validation messages and write files.", () => {
 	const spyValidateConclusionMaxDate = jest.spyOn(validator, "validateConclusionMaxDate");
 	spyValidateConclusionMaxDate.mockReturnValue(true);
 
-	console.log = jest.fn();
+	const uiLogMessage = jest.fn();
 
 	fs.existsSync.mockReturnValue(true);
-	jsonJobCreator.create();
+	jsonJobCreator.create(uiLogMessage);
 	expect(fs.writeFileSync).toHaveBeenCalled();
-	expect(console.log).toHaveBeenCalled();
+	expect(uiLogMessage).toHaveBeenCalled();
 
 	spyValidateTimeToExecute.mockRestore();
 	spyValidateConclusionMaxDate.mockRestore();
@@ -51,12 +51,12 @@ test("should return validation messages and write files.", () => {
 
 test("should modify a file", () => {
 	fs.existsSync.mockReturnValue(true);
-	jsonJobCreator.create();
+	jsonJobCreator.create(jest.fn());
 	expect(fs.writeFileSync).toHaveBeenCalled();
 });
 
 test("should not modify a file", () => {
 	fs.existsSync.mockReturnValue(false);
-	jsonJobCreator.create();
+	jsonJobCreator.create(jest.fn());
 	expect(fs.writeFileSync).not.toHaveBeenCalled();
 });
