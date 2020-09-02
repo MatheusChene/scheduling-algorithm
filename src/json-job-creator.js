@@ -7,7 +7,7 @@ let jsonJobCreator = {};
 jsonJobCreator.create = (uiLogMessage) => {
 	uiLogMessage("Generating new file...");
 
-	const startDate = jsonJobCreator.randomDate(new Date(2020, 0, 31), new Date(2020, 11, 31));
+	const startDate = jsonJobCreator.randomDate(new Date(2020, 0, 1), new Date(2020, 11, 31));
 	const endDate = new Date(startDate);
 	endDate.setDate(startDate.getDate() + jsonJobCreator.randomNumberBetween(1, 5));
 	endDate.setHours(startDate.getHours() + jsonJobCreator.randomNumberBetween(0, 24));
