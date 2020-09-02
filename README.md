@@ -1,5 +1,6 @@
 # scheduling-algorithm
 
+[![Build Status](https://travis-ci.com/MatheusChene/scheduling-algorithm.svg?branch=master)](https://travis-ci.com/MatheusChene/scheduling-algorithm)
 [![Coverage Status](https://coveralls.io/repos/github/MatheusChene/scheduling-algorithm/badge.svg?branch=master)](https://coveralls.io/github/MatheusChene/scheduling-algorithm?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
