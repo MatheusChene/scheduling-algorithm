@@ -35,9 +35,7 @@ core.scheduleJobs = (jsonObj) => {
 		scheduleJobs.push(list.jobs);
 	}
 
-	console.log(scheduleJobs);
-	console.log("Invalid jobs ids:");
-	console.log(invalidJobList);
+	return { scheduleJobs, invalidJobList };
 };
 
 core.fitJobOnSchedule = (jobList, job, startDate) => {
@@ -52,9 +50,10 @@ core.fitJobOnSchedule = (jobList, job, startDate) => {
 };
 
 core.jobMatch = (scheduleAccumulatedTime, job, startDate) => {
-	const jobConclusionDate = startDate.setHours(startDate.getHours() + scheduleAccumulatedTime + job.estimatedTime);
+	const jobConclusionDate = new Date(startDate);
+	jobConclusionDate.setHours(startDate.getHours() + scheduleAccumulatedTime + job.estimatedTime);
 
-	if (scheduleAccumulatedTime + job.estimatedTime > 8 || jobConclusionDate > job.conclusionMaxDate) {
+	if (scheduleAccumulatedTime + job.estimatedTime > 8 || jobConclusionDate > new Date(job.conclusionMaxDate)) {
 		return false;
 	}
 

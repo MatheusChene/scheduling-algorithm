@@ -7,13 +7,13 @@
 		{
 			"id": 0,
 			"description": "Job 0",
-			"estimatedTime": 9,
+			"estimatedTime": 8,
 			"conclusionMaxDate": "2020-07-22T22:00:00.000Z"
 		},
 		{
 			"id": 1,
 			"description": "Job 1",
-			"estimatedTime": 8,
+			"estimatedTime": 1,
 			"conclusionMaxDate": "2020-07-24T13:00:00.000Z"
 		},
 		{
@@ -25,8 +25,8 @@
 		{
 			"id": 3,
 			"description": "Job 3",
-			"estimatedTime": 9,
-			"conclusionMaxDate": "2020-07-21T15:00:00.000Z"
+			"estimatedTime": 8,
+			"conclusionMaxDate": "2020-07-25T15:00:00.000Z"
 		},
 		{
 			"id": 4,
