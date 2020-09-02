@@ -6,6 +6,9 @@
 
 Esta é uma aplicação feita para ordenar e dividir jobs a serem executados de forma cadenciada e otimizada.
 
+![hippo](https://media.giphy.com/media/SvdgIwwMkqFZERSmC9/giphy.gif)
+
+
 ## Regras
 
 -  Os jobs dentro de cada lista devem ser executados na sequência.
